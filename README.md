@@ -1,6 +1,6 @@
 # Reaction Rivals - Chemistry Auto-Battler
 
-A Unity-based Auto-Battler game where chemical elements are your units and chemical bonds are your synergies!
+A Unity-based **educational** Auto-Battler game where chemical elements are your units and chemical bonds are your synergies! Learn real chemistry while playing!
 
 ## 🎮 Game Overview
 
@@ -8,6 +8,36 @@ A Unity-based Auto-Battler game where chemical elements are your units and chemi
 - **Draft Units** → Buy Elements from the periodic table
 - **Combine Units** → Form Molecules through chemical bonding
 - **Synergies** → Element families (Noble Gases, Halogens, etc.)
+- **Learn** → Discover history and science behind each element!
+
+## 🎓 Educational Features
+
+### 📚 Level-Up Education System
+Each time you level up, you'll learn about the newly unlocked elements:
+- **Discovery History**: Who discovered it, when, and where
+- **Historical Significance**: How it changed human history
+- **Modern Applications**: Real-world uses today
+- **Fun Facts**: Memorable tidbits to reinforce learning
+
+### 🧠 Chemistry Quiz Mini-Game
+Between rounds, test your knowledge:
+- Multiple question types (symbols, atomic numbers, families, discoveries)
+- Earn bonus ATP (energy) for correct answers!
+- Streak bonuses reward consistent learning
+- Questions adapt to your unlocked elements
+
+### 📖 Interactive Glossary
+Access definitions of chemistry terms:
+- Terms unlock as you progress through levels
+- Categories: Atomic Structure, Bonding, Periodic Table, Reactivity
+- Real-world examples and fun facts for each term
+
+### 🔬 Element History Database
+Learn about every element's story:
+- Discovery dates and discoverers (historically accurate)
+- Significance in human history
+- Modern applications and uses
+- Fun facts that make chemistry memorable
 
 ## 🚀 Quick Start
 
@@ -47,10 +77,15 @@ Assets/
 │   ├── Data/               # ScriptableObject definitions
 │   │   ├── ElementData.cs
 │   │   ├── ElementFamily.cs
+│   │   ├── ElementHistory.cs     # Discovery & history data
+│   │   ├── LevelEducation.cs     # Level-up educational content
 │   │   ├── PeriodicTable.cs      # Full 118 elements
 │   │   ├── LevelElementProgression.cs
 │   │   ├── MoleculeRecipe.cs
 │   │   └── AbilityData.cs
+│   ├── Education/          # Educational systems
+│   │   ├── ChemistryQuiz.cs      # Quiz question generator
+│   │   └── ChemistryGlossary.cs  # Term definitions
 │   ├── Grid/               # Hex grid system
 │   │   ├── HexCell.cs
 │   │   └── HexGrid.cs
@@ -70,7 +105,10 @@ Assets/
 │   │   ├── PeriodicTableUI.cs    # Full table display
 │   │   ├── PeriodicTableCell.cs
 │   │   ├── PeriodicTableLegend.cs
-│   │   └── ElementTooltip.cs
+│   │   ├── ElementTooltip.cs
+│   │   ├── LevelUpEducationUI.cs # Level-up learning screen
+│   │   ├── ChemistryQuizUI.cs    # Quiz interface
+│   │   └── GlossaryUI.cs         # Glossary browser
 │   ├── Core/               # Bootstrap
 │   │   └── GameBootstrap.cs
 │   └── Editor/             # Editor tools
@@ -175,12 +213,73 @@ Elements unlock as you level up:
 - **ReactionRivals → Generate All Element ScriptableObjects**: Create data for all 118 elements
 - **ReactionRivals → Print Periodic Table Stats**: Debug info about elements
 
-## 📚 Educational Value
+## 📚 Educational Features
 
+### 🎓 Level-Up Learning
+Every level-up shows educational content about newly unlocked elements:
+- **Discovery History**: Who discovered each element and when
+- **Historical Significance**: Why the element matters to science
+- **Modern Uses**: Real-world applications
+- **Fun Facts**: Engaging trivia to spark curiosity
+
+Example Level-Up Content:
+> **Level 1: The Building Blocks of Life**
+> You've unlocked Hydrogen, Carbon, Nitrogen, and Oxygen!
+> *Did you know? These four elements make up 96% of your body mass!*
+
+### 📖 Element History Database
+Over 40 elements have detailed historical information:
+
+| Element | Discovered | Discoverer | Fun Fact |
+|---------|------------|------------|----------|
+| Hydrogen | 1766 | Henry Cavendish | Powers the Sun through nuclear fusion |
+| Oxygen | 1774 | Joseph Priestley | Makes up 21% of Earth's atmosphere |
+| Carbon | Ancient | Unknown | Can form more compounds than all other elements combined |
+| Gold | ~6000 BCE | Unknown | All the gold ever mined would fit in a 21-meter cube |
+| Uranium | 1789 | Martin Klaproth | Named after the planet Uranus |
+
+### 🧠 Chemistry Quiz Mini-Game
+Test your knowledge with 10 different question types:
+- **Symbol to Name**: What element is "Fe"?
+- **Name to Symbol**: What's the symbol for Gold?
+- **Atomic Number**: Which element is #6?
+- **Valence Electrons**: How many bonds can Oxygen form?
+- **Element Family**: What family is Neon in?
+- **Discovery Questions**: Who discovered Oxygen?
+- **True/False**: "Helium is a Noble Gas" - True or False?
+- **Bonding Types**: What bond forms between Na and Cl?
+- **Molecule Formulas**: What's the formula for Water?
+- **Real World Uses**: What is Helium commonly used for?
+
+**Quiz Rewards:**
+- Earn bonus ATP for correct answers
+- Build streaks for multiplier bonuses
+- Questions adapt to your unlocked elements
+
+### 📚 Chemistry Glossary
+Access 40+ chemistry terms with clear definitions:
+
+**Categories:**
+- Atomic Structure (Proton, Neutron, Electron, Nucleus, etc.)
+- Chemical Bonding (Covalent, Ionic, Metallic, Valence)
+- Periodic Table (Period, Group, Atomic Number)
+- Element Families (Noble Gas, Halogen, Alkali Metal)
+- Molecules & Compounds (Formula, Compound, Molecular)
+- Reactivity (Electronegativity, Oxidation, Reduction)
+
+**Example Entry:**
+> **Octet Rule**
+> *Category: Chemical Bonding*
+> Most atoms want 8 electrons in their outer shell to be stable.
+> *Fun Fact: Hydrogen only needs 2 electrons (duet rule) because it only has one shell!*
+
+### 🎮 Natural Learning Through Gameplay
 Players naturally learn:
 - **Valency**: "Carbon needs 4 bonds"
 - **Reactivity**: "Potassium explodes more than Lithium"
 - **Formulas**: "Water is H₂O" through gameplay
+- **Discovery History**: Element stories during level-ups
+- **Scientific Method**: Experimenting with different combinations
 
 ## 🎯 Next Steps
 
