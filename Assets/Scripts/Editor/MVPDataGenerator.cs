@@ -173,19 +173,20 @@ public class MVPDataGenerator : MonoBehaviour
     {
         ElementData element = ScriptableObject.CreateInstance<ElementData>();
         
-        element.ElementName = name;
-        element.Symbol = symbol;
-        element.AtomicNumber = atomicNumber;
-        element.BaseHP = hp;
-        element.BaseDamage = damage;
-        element.ValenceElectrons = valenceElectrons;
-        element.Cost = cost;
-        element.Family = family;
-        element.Rarity = rarity;
-        element.ElementColor = color;
-        element.AttackRange = attackRange;
-        element.AttackSpeed = 1f;
-        element.Electronegativity = GetElectronegativity(atomicNumber);
+        // Use lowercase field names (matching ElementData.cs serialized fields)
+        element.elementName = name;
+        element.symbol = symbol;
+        element.atomicNumber = atomicNumber;
+        element.baseHP = hp;
+        element.baseAttack = damage;
+        element.valenceElectrons = valenceElectrons;
+        element.cost = cost;
+        element.family = family;
+        element.rarity = rarity;
+        element.elementColor = color;
+        element.attackRange = attackRange;
+        element.attackSpeed = 1f;
+        element.electronegativity = GetElectronegativity(atomicNumber);
 
         AssetDatabase.CreateAsset(element, path);
         
