@@ -12,6 +12,33 @@ A Unity-based **educational** Auto-Battler game where chemical elements are your
 
 ## 🎓 Educational Features
 
+### ⚡ Lightning Round: Build the Atom
+A fast-paced mini-game where you construct every element in the periodic table!
+
+**How It Works:**
+1. You're given an element (e.g., "Carbon")
+2. Add the correct number of:
+   - 🔴 **Protons** (red) - in the nucleus
+   - ⚪ **Neutrons** (gray) - in the nucleus  
+   - 🔵 **Electrons** (blue) - orbiting in shells
+3. Submit before time runs out!
+4. Complete all 118 elements to win!
+
+**Features:**
+- 118 levels (one for each element)
+- Visual atom builder with animated electron orbits
+- Timer-based challenges with time bonuses
+- Streak system for consecutive correct answers
+- Save/resume progress at any time
+- Hints system when you're stuck
+- Educational feedback shows correct values on mistakes
+
+**What You'll Learn:**
+- Atomic number = number of protons
+- Neutral atoms have equal protons and electrons
+- Neutron count varies (isotopes)
+- Electron shell configuration (2, 8, 18, 32...)
+
 ### 📚 Level-Up Education System
 Each time you level up, you'll learn about the newly unlocked elements:
 - **Discovery History**: Who discovered it, when, and where
@@ -84,6 +111,7 @@ Assets/
 │   │   ├── MoleculeRecipe.cs
 │   │   └── AbilityData.cs
 │   ├── Education/          # Educational systems
+│   │   ├── AtomBuilder.cs        # ⚡ Lightning Round game logic
 │   │   ├── ChemistryQuiz.cs      # Quiz question generator
 │   │   └── ChemistryGlossary.cs  # Term definitions
 │   ├── Grid/               # Hex grid system
@@ -108,7 +136,9 @@ Assets/
 │   │   ├── ElementTooltip.cs
 │   │   ├── LevelUpEducationUI.cs # Level-up learning screen
 │   │   ├── ChemistryQuizUI.cs    # Quiz interface
-│   │   └── GlossaryUI.cs         # Glossary browser
+│   │   ├── GlossaryUI.cs         # Glossary browser
+│   │   ├── AtomBuilderUI.cs      # ⚡ Lightning Round UI
+│   │   └── AtomVisualization.cs  # Animated atom display
 │   ├── Core/               # Bootstrap
 │   │   └── GameBootstrap.cs
 │   └── Editor/             # Editor tools
