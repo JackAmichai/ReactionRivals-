@@ -46,6 +46,9 @@ Assets/
 ├── Scripts/
 │   ├── Data/               # ScriptableObject definitions
 │   │   ├── ElementData.cs
+│   │   ├── ElementFamily.cs
+│   │   ├── PeriodicTable.cs      # Full 118 elements
+│   │   ├── LevelElementProgression.cs
 │   │   ├── MoleculeRecipe.cs
 │   │   └── AbilityData.cs
 │   ├── Grid/               # Hex grid system
@@ -63,17 +66,23 @@ Assets/
 │   │   └── ShopManager.cs
 │   ├── UI/                 # User interface
 │   │   ├── UIManager.cs
-│   │   └── ShopSlot.cs
+│   │   ├── ShopSlot.cs
+│   │   ├── PeriodicTableUI.cs    # Full table display
+│   │   ├── PeriodicTableCell.cs
+│   │   ├── PeriodicTableLegend.cs
+│   │   └── ElementTooltip.cs
 │   ├── Core/               # Bootstrap
 │   │   └── GameBootstrap.cs
 │   └── Editor/             # Editor tools
-│       └── MVPDataGenerator.cs
+│       ├── MVPDataGenerator.cs
+│       └── PeriodicTableEditor.cs
 ├── Data/                   # Generated ScriptableObjects
 │   ├── Elements/
 │   └── Molecules/
 └── Prefabs/
     ├── HexCell.prefab
-    └── Unit.prefab
+    ├── Unit.prefab
+    └── ElementCell.prefab
 ```
 
 ## ⚗️ MVP Elements (The "Life Set")
@@ -124,6 +133,47 @@ Units must be **physically adjacent** on the hex grid to bond:
 1. Create new `MoleculeRecipe` ScriptableObject
 2. Set core element and requirements
 3. Add to `BondingManager.AllRecipes`
+
+## 🧪 Full Periodic Table System
+
+The game includes all 118 elements from the periodic table!
+
+### Periodic Table UI
+- **Press Tab** or click the **Periodic Table button** to view the full table
+- Elements are color-coded by family (Alkali, Noble Gas, Halogen, etc.)
+- **Highlighting shows your progress:**
+  - 🔒 **Dark/Dim** - Locked (not available at your level)
+  - ⬜ **Normal** - Unlocked (available in shop)
+  - 🟢 **Green Border** - Owned (you have this element)
+  - 🟡 **Gold Border** - In Molecule (part of an active compound)
+
+### Level Progression
+Elements unlock as you level up:
+
+| Level | Elements Unlocked |
+|-------|------------------|
+| 1 | H, C, N, O (Basics of Life) |
+| 2 | He, Na, Cl, Fe |
+| 3 | Li, Be, B, F, Ne, Mg |
+| 4 | Al, Si, P, S, Ar |
+| 5+ | More elements per level... |
+| 22 | All 118 elements! |
+
+### Element Families
+| Family | Elements | Game Effect |
+|--------|----------|-------------|
+| Hydrogen | H | Versatile bonding |
+| Alkali | Li, Na, K, Rb, Cs, Fr | Explosive on death |
+| Noble Gas | He, Ne, Ar, Kr, Xe, Rn, Og | Spell immune |
+| Halogens | F, Cl, Br, I, At, Ts | Electron stealing |
+| Transition Metals | Fe, Cu, Au, Ag, etc. | Metallic bonding |
+| Lanthanides | La-Lu (57-71) | Rare earth powers |
+| Actinides | Ac-Lr (89-103) | Radioactive abilities |
+
+### Editor Tools
+- **ReactionRivals → Create Level Progression Asset**: Generate default element unlock schedule
+- **ReactionRivals → Generate All Element ScriptableObjects**: Create data for all 118 elements
+- **ReactionRivals → Print Periodic Table Stats**: Debug info about elements
 
 ## 📚 Educational Value
 

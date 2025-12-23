@@ -55,6 +55,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI finalRoundText;
     [SerializeField] private Button restartButton;
 
+    [Header("Periodic Table")]
+    [SerializeField] private PeriodicTableUI periodicTableUI;
+    [SerializeField] private Button toggleTableButton;
+
     [Header("Colors")]
     [SerializeField] private Color prepPhaseColor = new Color(0.2f, 0.6f, 1f);
     [SerializeField] private Color combatPhaseColor = new Color(1f, 0.3f, 0.3f);
@@ -96,6 +100,9 @@ public class UIManager : MonoBehaviour
         
         if (restartButton != null)
             restartButton.onClick.AddListener(OnRestartClicked);
+
+        if (toggleTableButton != null)
+            toggleTableButton.onClick.AddListener(TogglePeriodicTable);
     }
 
     private void SubscribeToEvents()
@@ -387,6 +394,71 @@ public class UIManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(
             UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
         );
+    }
+
+    #endregion
+
+    #region Periodic Table
+
+    /// <summary>
+    /// Toggle periodic table visibility
+    /// </summary>
+    public void TogglePeriodicTable()
+    {
+        if (periodicTableUI != null)
+        {
+            periodicTableUI.ToggleVisibility();
+        }
+    }
+
+    /// <summary>
+    /// Update periodic table to highlight owned elements
+    /// </summary>
+    public void UpdatePeriodicTableWithOwnedElements(List<Unit> ownedUnits)
+    {
+        if (periodicTableUI == null) return;
+
+        List<int> atomicNumbers = new List<int>();
+        foreach (var unit in ownedUnits)
+        {
+            if (unit?.Data != null)
+            {
+                atomicNumbers.Add(unit.Data.AtomicNumber);
+            }
+        }
+        periodicTableUI.SetOwnedElements(atomicNumbers);
+    }
+
+    /// <summary>
+    /// Update periodic table for current player level
+    /// </summary>
+    public void UpdatePeriodicTableLevel(int level)
+    {
+        if (periodicTableUI != null)
+        {
+            periodicTableUI.SetPlayerLevel(level);
+        }
+    }
+
+    /// <summary>
+    /// Highlight elements that are part of active molecules
+    /// </summary>
+    public void HighlightMoleculeElements(List<Molecule> activeMolecules)
+    {
+        if (periodicTableUI == null) return;
+
+        List<int> moleculeElements = new List<int>();
+        foreach (var molecule in activeMolecules)
+        {
+            foreach (var unit in molecule.BondedUnits)
+            {
+                if (unit?.Data != null)
+                {
+                    moleculeElements.Add(unit.Data.AtomicNumber);
+                }
+            }
+        }
+        periodicTableUI.SetElementsInMolecules(moleculeElements);
     }
 
     #endregion
